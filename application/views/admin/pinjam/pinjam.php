@@ -74,7 +74,7 @@
             <?=tgl_indo($k['pinjam_tanggal_kembali']);?>
             <?php endif; ?>
           </td>
-          <td><?=rupiah(denda($k['pinjam_tanggal']));?></td>
+          <td><?=$k['pinjam_status_kembali'] == 'belum dikembalikan' ? rupiah(denda($k['pinjam_tanggal'])) : rupiah($k['denda']);?></td>
           <td>
             <a href="<?=site_url('admin/pinjam/edit/'.$k['pinjam_id']);?>" title="edit" class="text-warning"><i class="fas fa-edit"></i></a>
             <a href="<?=site_url('admin/pinjam/delete/'.$k['pinjam_id']);?>" title="delete" class="text-danger" onclick="return confirm('Apakah anda yakin akan menghapus?');"><i class="fas fa-trash"></i></a>

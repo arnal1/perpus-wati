@@ -112,6 +112,13 @@ class Pinjam_kelas extends MY_Controller {
       $data['pinjam_status'] = $post['pinjam_status'];
       $data['pinjam_tanggal_kembali'] = date('Y-m-d');
       
+      if($post['pinjam_status'] == 'sudah dikembalikan') {
+        $peminjam = $this->Pinjam_kelas_model->getById($id)->row_array();
+        $data['pinjam_status'] = $post['pinjam_status'];
+        $data['pinjam_tanggal_kembali'] = date('Y-m-d');
+        $data['denda'] = denda($peminjam['pinjam_tanggal']);
+      }
+
       if($this->Pinjam_kelas_model->update($id, $data)) {
         $this->session->set_flashdata('notif', '
           <script>

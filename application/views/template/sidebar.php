@@ -81,7 +81,7 @@
           </ul>
         </li>
         <li class="nav-item">
-          <a href="<?=site_url('admin/dashboard');?>" class="nav-link">
+          <a href="<?=site_url('admin/laporan');?>" class="nav-link">
             <i class="nav-icon fas fa-flag"></i>
             <p>Laporan</p>
           </a>

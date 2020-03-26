@@ -49,13 +49,7 @@
         <?php foreach($pinjam_kelas as $k): ?>
         <tr>
           <td><?=$no++;?></td>
-          <td>
-            <?php if($k['pinjam_status'] == 'siswa'): ?>
-            <?=$k['kelas_nama'];?>
-            <?php else: ?>
-            -
-            <?php endif; ?>
-          </td>
+          <td><?=$k['kelas_nama'];?></td>
           <td><?=$k['pinjam_penanggung_jawab'];?></td>
           <td><?=tgl_indo($k['pinjam_tanggal']);?></td>
           <td>
@@ -72,7 +66,7 @@
             <?=tgl_indo($k['pinjam_tanggal_kembali']);?>
             <?php endif; ?>
           </td>
-          <td><?=rupiah(denda($k['pinjam_tanggal']));?></td>
+          <td><?=$k['pinjam_status'] == 'belum dikembalikan' ? rupiah(denda($k['pinjam_tanggal'])) : rupiah($k['denda']);?></td>
           <td>
             <a href="<?=site_url('admin/pinjam_kelas/edit/'.$k['pinjam_id']);?>" title="edit" class="text-warning"><i class="fas fa-edit"></i></a>
             <a href="<?=site_url('admin/pinjam_kelas/delete/'.$k['pinjam_id']);?>" title="delete" class="text-danger" onclick="return confirm('Apakah anda yakin akan menghapus?');"><i class="fas fa-trash"></i></a>
